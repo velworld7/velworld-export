@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, ArrowLeft, Send, X, Package, Box, Truck, ShieldCheck, Factory, Globe, Layers, Settings, Mountain, Construction, Scissors, Shirt, MessageSquare, Building2, Globe2, Mail, Phone, Clock, FileText, Ruler } from 'lucide-react';
 
 interface SubProduct {
@@ -269,6 +269,39 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
   const selectedCategory = categories.find(c => c.id === activeCatId);
 
+  // Handle Browser Back Button for Category & Product Modal
+  useEffect(() => {
+    const handlePopState = () => {
+      if (activeSubProduct) {
+        setActiveSubProduct(null);
+      } else if (activeCatId) {
+        onSelectCategory(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Push state when opening category or product
+    if (activeCatId && !activeSubProduct) {
+      // Only push if we aren't already there? 
+      // Simple implementation: Just let browser stack build up, but careful not to loop
+      // We can use replaceState if we want to update the URL without pushing
+      // But user WANTS to push so Back button works.
+      // We'll manage this by only pushing if `history.state` doesn't match
+      if (history.state?.view !== 'category') {
+        window.history.pushState({ view: 'category' }, '');
+      }
+    }
+
+    if (activeSubProduct) {
+      if (history.state?.view !== 'product') {
+        window.history.pushState({ view: 'product' }, '');
+      }
+    }
+
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [activeCatId, activeSubProduct, onSelectCategory]);
+
   const EnquiryModal = ({ productType, onClose }: { productType: string; onClose: () => void }) => {
     const [formData, setFormData] = useState({
       name: '',
@@ -396,15 +429,15 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
       <div className="relative w-full max-w-6xl bg-[var(--bg)] border border-[var(--border)] rounded-[4rem] overflow-hidden flex flex-col md:flex-row shadow-premium animate-apple-up">
 
-        <button onClick={onClose} className="absolute top-8 right-8 z-20 p-4 bg-[var(--text)]/[0.05] hover:bg-[var(--text)]/[0.1] rounded-full text-[var(--text)] transition-all">
-          <X size={24} />
+        <button onClick={onClose} className="absolute top-6 right-6 z-20 p-3 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all border border-white/10">
+          <X size={20} />
         </button>
 
-        <div className="w-full md:w-1/2 relative min-h-[400px]">
+        <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px]">
           <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/40 to-transparent" />
-          <div className="absolute bottom-12 left-12">
-            <h3 className="text-6xl md:text-8xl font-bebas text-[var(--text)] tracking-tight uppercase leading-none drop-shadow-sm">{product.name}</h3>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100" />
+          <div className="absolute bottom-8 left-6 md:bottom-12 md:left-12 pr-6">
+            <h3 className="text-5xl md:text-8xl font-bebas text-white tracking-tight uppercase leading-none drop-shadow-lg shadow-black">{product.name}</h3>
           </div>
         </div>
 
