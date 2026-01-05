@@ -424,10 +424,10 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
   };
 
   const ProductDetailModal = ({ product, onClose }: { product: SubProduct; onClose: () => void }) => (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-md animate-fade-in" onClick={onClose} />
 
-      <div className="relative w-full max-w-6xl bg-[var(--bg)] border border-[var(--border)] rounded-[4rem] overflow-hidden flex flex-col md:flex-row shadow-premium animate-apple-up">
+      <div className="relative w-full max-w-6xl bg-[var(--bg)] border border-[var(--border)] rounded-none md:rounded-[4rem] h-full md:h-auto overflow-hidden flex flex-col md:flex-row shadow-premium animate-apple-up">
 
         <button onClick={onClose} className="absolute top-6 right-6 z-20 p-3 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all border border-white/10">
           <X size={20} />
