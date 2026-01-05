@@ -424,7 +424,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
   };
 
   const ProductDetailModal = ({ product, onClose }: { product: SubProduct; onClose: () => void }) => (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-0 md:p-8">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-8">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-md animate-fade-in" onClick={onClose} />
 
       <div className="relative w-full max-w-6xl bg-[var(--bg)] border border-[var(--border)] rounded-none md:rounded-[4rem] h-full md:h-auto overflow-hidden flex flex-col md:flex-row shadow-premium animate-apple-up">
@@ -435,9 +435,9 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
         <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px]">
           <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-100" />
           <div className="absolute bottom-8 left-6 md:bottom-12 md:left-12 pr-6">
-            <h3 className="text-5xl md:text-8xl font-bebas text-white tracking-tight uppercase leading-none drop-shadow-lg shadow-black">{product.name}</h3>
+            <h3 className="text-5xl md:text-8xl font-bebas text-white tracking-tight uppercase leading-none drop-shadow-2xl shadow-black text-shadow-lg">{product.name}</h3>
           </div>
         </div>
 
