@@ -255,13 +255,53 @@ const categories: Category[] = [
     image: "/image/leather_category.png",
     subProducts: [
       {
-        name: "Best Leather Products",
-        labels: ["Custom Shades", "Unique Designs"],
-        description: "We use high-quality leather for all our leather manufactured products ensuring durability, long-lasting quality, and style. Customized color shades, designs, patterns, and sizes available.",
-        image: "/image/leather_product_detail.png",
+        name: "Leather Bags",
+        labels: ["Travel", "Messenger", "Custom"],
+        description: "Premium handcrafted leather bags designed for style, durability, and functionality.",
+        image: "/image/leather_bags.png",
         specs: {
-          varieties: ["Bags", "Wallets", "Shoes", "Belts", "Jackets"],
-          features: ["Custom Color Shades", "Unique Designs", "Pattern Customization", "Size Customization"]
+          varieties: ["Travel Bags", "Messenger Bags", "Handbags"],
+          features: ["Full Grain Leather", "Custom Lining", "Brass Hardware"]
+        }
+      },
+      {
+        name: "Wallets & Cardholders",
+        labels: ["Bi-Fold", "Slim", "Classic"],
+        description: "Elegant leather wallets and cardholders, featuring precise stitching and timeless designs.",
+        image: "/image/leather_wallets.png",
+        specs: {
+          varieties: ["Bi-Fold", "Tri-Fold", "Cardholders"],
+          features: ["RFID Protection", "Genuine Leather", "Compact Design"]
+        }
+      },
+      {
+        name: "Handcrafted Shoes",
+        labels: ["Oxford", "Boots", "Formal"],
+        description: "Bespoke leather shoes and boots, offering superior comfort and sophisticated style.",
+        image: "/image/leather_shoes.png",
+        specs: {
+          varieties: ["Oxfords", "Derby", "Boots", "Loafers"],
+          features: ["Hand Stitched", "Premium Soles", "Custom Fit"]
+        }
+      },
+      {
+        name: "Leather Belts",
+        labels: ["Formal", "Casual", "Durable"],
+        description: "High-quality genuine leather belts with custom buckles, perfect for any occasion.",
+        image: "/image/leather_belts.png",
+        specs: {
+          varieties: ["Formal Belts", "Casual Belts", "Reversible"],
+          features: ["Full Grain", "Brass/Silver Buckles", "Custom Widths"]
+        }
+      },
+      {
+        name: "Leather Jackets",
+        labels: ["Bomber", "Biker", "Fashion"],
+        description: "Stylish leather jackets crafted from soft, premium hides for a perfect fit and finish.",
+        image: "/image/leather_jackets.png",
+        specs: {
+          varieties: ["Bomber Jackets", "Biker Jackets", "Blazers"],
+          features: ["Premium Sheep/Lamb Leather", "Custom Zippers", "Satin Lining"]
         }
       }
     ]
