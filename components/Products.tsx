@@ -154,7 +154,7 @@ const categories: Category[] = [
     id: "coco",
     title: "Coconut Based Products",
     description: "Superior quality mature coconuts, desiccated powder, and cold-pressed virgin oils.",
-    labels: ["Mature", "IQF", "Certified"],
+    labels: ["Mature", "Organic", "Certified"],
     image: "/image/coco_category_v2.png",
     subProducts: [
       {
