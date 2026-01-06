@@ -62,11 +62,9 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
           }`}
       >
         {/* Left Navigation Area */}
+        {/* Left Navigation Area - REMOVED GLOBAL HUB */}
         <div className="flex-1 hidden md:flex items-center">
-          <button className="text-[10px] font-black tracking-[0.4em] uppercase text-[var(--text)] opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all flex items-center gap-3">
-            <Globe size={14} strokeWidth={2.5} />
-            <span>GLOBAL HUB</span>
-          </button>
+          {/* Global Hub removed as per request */}
         </div>
 
         {/* PREMIUM CENTERED BRAND LOGO */}
