@@ -355,7 +355,7 @@ const categories: Category[] = [
         name: "Home Textiles",
         labels: ["Bedding", "Bath", "Kitchen", "Decor", "Floor"],
         description: "Exquisite home textile products designed to elevate living spaces with comfort and style.",
-        image: "/image/home_textiles.png",
+        image: "/image/home_textiles.jpg",
         specs: {
           varieties: ["Bed Sheets", "Towels", "Curtains", "Carpets", "Aprons", "Kitchen Towels", "Napkins", "Mittens", "Blankets", "Floor Cushions", "Quilts", "Pillow Cases", "Table Tops"],
           features: ["High Thread Count", "Durable Weave", "Vibrant Designs"]
@@ -365,7 +365,7 @@ const categories: Category[] = [
         name: "Fabrics",
         labels: ["Cotton & Blends", "Denim", "Silk", "Synthetic", "Wool"],
         description: "Wide selection of premium fabrics ranging from organic blends to technical synthetics for diverse applications.",
-        image: "/image/fabrics.png",
+        image: "/image/fabrics.jpg",
         specs: {
           varieties: ["Premium Cottons", "Denims", "Organic Blends", "Linens", "Silks", "Woollens", "Synthetics", "Yarn Dyed Fabrics"],
           features: ["Global Sourcing", "Quality Certified", "Custom Weaves"]
