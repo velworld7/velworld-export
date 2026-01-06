@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
       <div className="relative z-20 w-full max-w-[95rem] px-6 mx-auto flex flex-col items-center">
         <div className="text-center opacity-0 animate-apple-in" style={{ animationDelay: '0.4s' }}>
           <h1
-            className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-bebas leading-[0.9] tracking-tight text-white uppercase mb-4 transition-all duration-500 hover:scale-105 vel-world-title"
+            className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-bebas leading-[0.9] tracking-tight text-[#FFD700] uppercase mb-4 transition-all duration-500 hover:scale-105 vel-world-title"
           >
             VEL WORLD
           </h1>
