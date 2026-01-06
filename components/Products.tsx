@@ -155,7 +155,7 @@ const categories: Category[] = [
     title: "Coconut Based Products",
     description: "Superior quality mature coconuts, desiccated powder, and cold-pressed virgin oils.",
     labels: ["Mature", "IQF", "Certified"],
-    image: "/image/coco_category.png",
+    image: "/image/coco_category_v2.png",
     subProducts: [
       {
         name: "Semi-Husked Coconut",
@@ -166,7 +166,7 @@ const categories: Category[] = [
       },
       { name: "Tender Coconut", labels: ["Fresh", "Natural"], description: "Naturally sweet and refreshing young coconuts, harvested for maximum water content.", image: "/image/tender_coconut.png" },
       { name: "Coco Peat", labels: ["Organic", "Growth"], description: "Sustainable coconut husk fiber used as a superior growing medium.", image: "/image/coco_peat.png" },
-      { name: "Coconut Oil", labels: ["Virgin", "Cold-Pressed"], description: "Pure, aromatic oil extracted from fresh coconut meat without chemical processing.", image: "/image/coconut_oil.png" },
+      { name: "Coconut Oil", labels: ["Virgin", "Cold-Pressed"], description: "Pure, aromatic oil extracted from fresh coconut meat without chemical processing.", image: "/image/coconut_oil_v2.png" },
       { name: "Dessicated Coconut Powder", labels: ["Fine", "Medium", "Coarse"], description: "High-quality dehydrated coconut meat, perfect for confectioneries and bakeries.", image: "/image/dessicated_coconut.png" },
       { name: "Coconut Chunks", labels: ["Dehydrated", "Fresh Frozen"], description: "Premium cut coconut pieces, preserving natural taste and texture for food industries.", image: "/image/coconut_chunks.png" },
       { name: "Coconut Sugar", labels: ["Organic", "Low GI"], description: "Healthy natural sweetener with a rich caramel flavor, lower glycemic index than regular sugar.", image: "/image/coconut_sugar.png" },
