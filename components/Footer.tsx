@@ -67,11 +67,7 @@ const Footer: React.FC = () => {
                 Making global trade reliable, transparent, and efficient. Your premier partner for international excellence and precision.
               </p>
               <div className="flex gap-4">
-                {[Linkedin, Instagram, Twitter, Facebook].map((Icon, i) => (
-                  <a key={i} href="#" className="p-4 bg-[var(--text)]/[0.05] hover:bg-[#0066cc] hover:text-white transition-all rounded-2xl text-[var(--text)]">
-                    <Icon size={20} />
-                  </a>
-                ))}
+                {/* Social icons removed as per request */}
               </div>
             </div>
           </div>
