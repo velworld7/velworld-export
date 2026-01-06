@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, ArrowLeft, Send, X, Package, Box, Truck, ShieldCheck, Factory, Globe, Layers, Settings, Mountain, Construction, Scissors, Shirt, MessageSquare, Building2, Globe2, Mail, Phone, Clock, FileText, Ruler } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, Send, X, Package, Box, Truck, ShieldCheck, Factory, Globe, Layers, Settings, Mountain, Construction, Scissors, Shirt, MessageSquare, Building2 as Building, Globe2, Mail, Phone, Clock, FileText, Ruler, ChevronLeft } from 'lucide-react';
 
 interface SubProduct {
   name: string;
@@ -444,6 +444,16 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
     return () => window.removeEventListener('popstate', handlePopState);
   }, [activeCatId, activeSubProduct, onSelectCategory, showEnquiry]);
 
+  // Lock body scroll when Modal is open
+  useEffect(() => {
+    if (activeSubProduct || showEnquiry.isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [activeSubProduct, showEnquiry.isOpen]);
+
   const EnquiryModal = ({ productType, onClose }: { productType: string; onClose: () => void }) => {
     const [formData, setFormData] = useState({
       name: '',
@@ -491,7 +501,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
                 <div className="relative group">
                   <div className="absolute left-5 top-1/2 -translate-y-1/2 text-[#86868b] group-focus-within:text-[#0066cc] transition-colors">
-                    <Building2 size={18} />
+                    <Building size={18} />
                   </div>
                   <input required placeholder="COMPANY NAME" className="w-full bg-black/5 rounded-2xl pl-14 pr-6 py-4 text-xs font-bold tracking-widest uppercase focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#0066cc]/20 transition-all border border-transparent"
                     value={formData.companyName} onChange={e => setFormData({ ...formData, companyName: e.target.value })} />
@@ -699,10 +709,12 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                     const y = element.getBoundingClientRect().top + window.scrollY - 100;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
-                }, 300);
-              }} className="group mb-12 flex items-center gap-4 text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors uppercase text-[11px] font-bold tracking-[0.4em]">
-                <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                Return to Full Experience
+                }, 100);
+              }} className="group flex items-center gap-4 text-[var(--text)] hover:text-[#0066cc] transition-colors mb-8">
+                <div className="p-3 rounded-full border border-[var(--border)] group-hover:border-[#0066cc] transition-colors">
+                  <ChevronLeft size={20} />
+                </div>
+                <span className="font-bold tracking-[0.3em] text-xs uppercase">Back to Categories</span>
               </button>
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
                 <h2 className="text-[12vw] md:text-[6vw] font-bebas leading-tight uppercase text-[#1d1d1f]">
@@ -721,7 +733,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
             {categories.map((cat, idx) => (
               <div key={cat.id} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${0.3 + (idx * 0.1)}s` }}>
                 <div className="relative aspect-[3/4] overflow-hidden rounded-[3.5rem] bg-white border border-black/5 shadow-premium transition-all duration-700 hover:-translate-y-6 hover:shadow-[0_60px_100px_rgba(0,0,0,0.1)] cursor-pointer" onClick={() => { onSelectCategory(cat.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  <img src={cat.image} alt={cat.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" />
+                  <img src={cat.image} alt={cat.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
                   <div className="absolute inset-0 p-12 flex flex-col justify-end">
                     <div className="flex flex-wrap gap-3 mb-8">
@@ -751,7 +763,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
               <div key={idx} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${idx * 0.05}s` }}>
                 <div className="bg-white rounded-[3.5rem] overflow-hidden border border-black/5 group-hover:border-[#0066cc]/20 transition-all duration-500 flex flex-col h-full shadow-premium cursor-pointer relative" onClick={() => setActiveSubProduct(sub)}>
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <img src={sub.image} alt={sub.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <img src={sub.image} alt={sub.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-8 flex flex-wrap gap-2">
                       {sub.labels.map((lbl, lidx) => (
