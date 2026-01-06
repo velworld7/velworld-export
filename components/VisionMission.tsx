@@ -24,9 +24,9 @@ const VisionMission: React.FC = () => {
               </div>
               <h4 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">OUR VISION</h4>
               <p className="text-[var(--text-secondary)] leading-relaxed font-medium text-lg text-balance">
-                To bridge the gap between world markets and Indian excellence, pioneering a new era of global growth through constant innovation.
+                To bridge between world markets and Indian excellence, pioneering a new era of global growth through constant innovation.
               </p>
-              <div className="mt-auto pt-10 text-[10px] tracking-[0.5em] text-[var(--text)] opacity-20 font-bold uppercase">GLOBAL GROWTH</div>
+
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const VisionMission: React.FC = () => {
               <p className="text-[var(--text-secondary)] leading-relaxed font-medium text-lg text-balance">
                 Deliver premium quality products with assured safety, transparent pricing, and 100% international compliance at every step.
               </p>
-              <div className="mt-auto pt-10 text-[10px] tracking-[0.5em] text-[var(--text)] opacity-20 font-bold uppercase">RELIABILITY</div>
+
             </div>
           </div>
 
@@ -59,7 +59,7 @@ const VisionMission: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <div className="mt-auto pt-10 text-[10px] tracking-[0.5em] text-[var(--text)] opacity-20 font-bold uppercase">EXCELLENCE</div>
+
             </div>
           </div>
         </div>
