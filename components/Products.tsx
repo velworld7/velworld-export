@@ -342,13 +342,33 @@ const categories: Category[] = [
     image: "/image/app_category.png",
     subProducts: [
       {
-        name: "High-Fashion Garments",
-        labels: ["Ready-to-Wear", "Activewear", "Knitwear"],
-        description: "Specialized knitwear and bespoke apparel created through advanced processes like tie & dye, embroidery, and laser cut.",
+        name: "Garments",
+        labels: ["Men & Women", "Kids", "Activewear", "Workwear", "Uniforms"],
+        description: "Comprehensive range of high-quality apparel for men, women, and children, including uniforms and activewear.",
         image: "/image/garments_fashion.png",
         specs: {
-          varieties: ["T-shirts", "Shirts", "Hoodies", "Chinos", "Jeans", "Activewear"],
-          features: ["Embroidery & Lace Work", "Laser Cut & Patchwork", "Enzyme/Stone Wash"]
+          varieties: ["T-shirts", "Shirts", "Hoodies", "Chinos", "Jeans", "Activewear", "Workwear", "Sarees", "Kurtas", "Intimates"],
+          features: ["Premium Fabrics", "Custom Fits", "Sustainable Options"]
+        }
+      },
+      {
+        name: "Home Textiles",
+        labels: ["Bedding", "Bath", "Kitchen", "Decor", "Floor"],
+        description: "Exquisite home textile products designed to elevate living spaces with comfort and style.",
+        image: "/image/garments_fashion.png",
+        specs: {
+          varieties: ["Bed Sheets", "Towels", "Curtains", "Carpets", "Aprons", "Kitchen Towels", "Napkins", "Mittens", "Blankets", "Floor Cushions", "Quilts", "Pillow Cases", "Table Tops"],
+          features: ["High Thread Count", "Durable Weave", "Vibrant Designs"]
+        }
+      },
+      {
+        name: "Fabrics",
+        labels: ["Cotton & Blends", "Denim", "Silk", "Synthetic", "Wool"],
+        description: "Wide selection of premium fabrics ranging from organic blends to technical synthetics for diverse applications.",
+        image: "/image/garments_fashion.png",
+        specs: {
+          varieties: ["Premium Cottons", "Denims", "Organic Blends", "Linens", "Silks", "Woollens", "Synthetics", "Yarn Dyed Fabrics"],
+          features: ["Global Sourcing", "Quality Certified", "Custom Weaves"]
         }
       }
     ]
