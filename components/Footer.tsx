@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
                 VEL WORLD
               </h2>
               <p className="text-[var(--text-secondary)] text-base leading-relaxed mb-10 font-medium">
-                Making global trade reliable, transparent, and efficient since 2024. Your premier partner for international excellence and precision.
+                Making global trade reliable, transparent, and efficient. Your premier partner for international excellence and precision.
               </p>
               <div className="flex gap-4">
                 {[Linkedin, Instagram, Twitter, Facebook].map((Icon, i) => (
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
         {/* BOTTOM BAR */}
         <div className="pt-16 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-10">
           <p className="text-[var(--text-secondary)] text-[10px] tracking-[0.5em] uppercase font-bold text-center md:text-left">
-            &copy; 2024 VEL WORLD TRADING PVT LTD. ALL RIGHTS RESERVED.
+            &copy; VEL WORLD TRADING PVT LTD. ALL RIGHTS RESERVED.
           </p>
 
           <div className="flex items-center gap-12">

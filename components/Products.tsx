@@ -82,7 +82,7 @@ const categories: Category[] = [
         description: "Aromatic and high-yield rice varieties, processed in ultra-modern milling facilities.",
         image: "/image/rice.png",
         specs: {
-          varieties: ["Basmati, Non-Basmati, Pesticide Free, Karuni, Matta"],
+          varieties: ["Basmati, Non-Basmati, Pesticide Free, Black Rice, Matta"],
           packing: "10kg, 20kg, 25kg, 50kg in PP or Non-Woven Bags",
           capacity: "25 Metric Tons in 1x20 ft Container"
         }
