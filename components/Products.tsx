@@ -195,6 +195,34 @@ const categories: Category[] = [
         description: "Designed for household utility with longer sticks to ensure safety while lighting stoves or ovens.",
         image: "/image/kitchen_matches.png",
         specs: { sizing: "40mm to 50mm", packing: "Value Packs" }
+      },
+      {
+        name: "Veneer Safety Matches",
+        labels: ["Quality Timber", "Smooth Burn"],
+        description: "Manufactured from high-quality timber veneer, providing a steady flame and consistent performance.",
+        image: "/image/veneer_matches.png",
+        specs: { features: ["Quality Timber Veneer", "Splinter-free", "Steady burn"] }
+      },
+      {
+        name: "Wooden Safety Matches",
+        labels: ["Classic", "Sturdy"],
+        description: "Traditional wooden matches known for their strength and reliability, perfect for general purpose use.",
+        image: "/image/wooden_matches.png",
+        specs: { features: ["Soft Wood Material"], packing: "Standard Consumer Packs" }
+      },
+      {
+        name: "Cardboard Safety Matches",
+        labels: ["Eco-Friendly", "Compact"],
+        description: "Sustainable safety matches made from high-quality cardboard spills, offering an eco-conscious choice.",
+        image: "/image/cardboard_matches.png",
+        specs: { features: ["Recycled Board Material", "Biodegradable", "Lightweight"] }
+      },
+      {
+        name: "Long Barbecue Safety Matches",
+        labels: ["Extra Long", "Grill Safe"],
+        description: "Specialized extra-long matches designed for safely lighting barbecues, fireplaces, and deep candle jars.",
+        image: "/image/kitchen_matches.png",
+        specs: { sizing: "100mm - 280mm", features: ["Ideal for BBQ, Fireplace, Campfire"] }
       }
     ]
   },
