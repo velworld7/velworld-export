@@ -170,7 +170,7 @@ const categories: Category[] = [
       { name: "Dessicated Coconut Powder", labels: ["Fine", "Medium", "Coarse"], description: "High-quality dehydrated coconut meat, perfect for confectioneries and bakeries.", image: "/image/dessicated_coconut.png" },
       { name: "Coconut Chunks", labels: ["Dehydrated", "Fresh Frozen"], description: "Premium cut coconut pieces, preserving natural taste and texture for food industries.", image: "/image/coconut_chunks.png" },
       { name: "Coconut Sugar", labels: ["Organic", "Low GI"], description: "Healthy natural sweetener with a rich caramel flavor, lower glycemic index than regular sugar.", image: "/image/coconut_sugar.png" },
-      { name: "Copra", labels: ["Edible", "Milling"], description: "Sun-dried or kiln-dried coconut kernels suitable for oil extraction and food processing.", image: "/image/copra.png" },
+      { name: "Copra", labels: ["Edible", "Milling"], description: "Sun-dried or kiln-dried coconut kernels suitable for oil extraction and food processing.", image: "/image/copra_v3.png" },
       { name: "Coconut Shell Charcoal", labels: ["Eco-Friendly", "High Heat"], description: "Clean-burning charcoal made from coconut shells, ideal for BBQ and industrial fuel.", image: "/image/coconut_charcoal.png" },
       { name: "Coir Products", labels: ["Sustainable", "Biodegradable"], description: "Eco-friendly range including coir pith, fiber, pots, and erosion control mats.", image: "/image/coir_products.png" }
     ]
