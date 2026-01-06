@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
   return (
     <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'dark' : ''}`}>
-      <Header scrolled={scrolled} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header scrolled={scrolled} darkMode={darkMode} toggleDarkMode={toggleDarkMode} onResetCategory={() => setActiveCategory(null)} />
 
       <main className="bg-[var(--bg)] transition-colors duration-700">
         {!activeCategory && (

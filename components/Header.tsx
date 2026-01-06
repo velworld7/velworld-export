@@ -6,9 +6,10 @@ interface HeaderProps {
   scrolled: boolean;
   darkMode: boolean;
   toggleDarkMode: () => void;
+  onResetCategory?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) => {
+const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onResetCategory }) => {
   const [isPulling, setIsPulling] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -29,6 +30,21 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
 
   const scrollToSection = (id: string) => {
     setIsNavOpen(false);
+
+    // If we are in a sub-page (like products), reset to home view first
+    if (onResetCategory) {
+      onResetCategory();
+
+      // Allow time for components to mount before scrolling
+      setTimeout(() => {
+        findAndScroll(id);
+      }, 100);
+    } else {
+      findAndScroll(id);
+    }
+  };
+
+  const findAndScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -62,7 +78,6 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
           }`}
       >
         {/* Left Navigation Area */}
-        {/* Left Navigation Area - REMOVED GLOBAL HUB */}
         <div className="flex-1 hidden md:flex items-center">
           {/* Global Hub removed as per request */}
         </div>
@@ -70,7 +85,10 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
         {/* PREMIUM CENTERED BRAND LOGO */}
         <div className="flex flex-col items-center justify-center">
           <div
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => {
+              if (onResetCategory) onResetCategory();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="relative h-12 md:h-16 lg:h-20 w-auto flex flex-col items-center justify-center cursor-pointer transition-all duration-700 hover:scale-105 active:scale-95 group"
           >
             <img
@@ -97,8 +115,6 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
               </div>
             </button>
           </div>
-
-
 
           <button
             onClick={() => setIsNavOpen(true)}
@@ -156,7 +172,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode }) =
           {/* Footer of Drawer */}
           <div className="p-10 border-t border-[var(--border)] text-center">
             <p className="text-[9px] font-bold tracking-[0.3em] text-[var(--text-secondary)] uppercase opacity-50">
-              Global Trade Excellence &copy; 2024
+              Global Trade Excellence
             </p>
           </div>
         </div>
