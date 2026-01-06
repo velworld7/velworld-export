@@ -200,20 +200,43 @@ const categories: Category[] = [
   },
   {
     id: "eng",
-    title: "Engineering & Industrial",
-    description: "Leading exporter of high-quality industrial steel and premium leather craftsmanship.",
-    labels: ["Steel", "Leather", "Precision", "Industrial"],
-    image: "/image/eng_category.png",
+    title: "Engineering Products",
+    description: "VEL WORLD is a leading wholesaler and exporter of high-quality mild steel, top-grade plates, stainless steel products, and industrial steel materials. We take great pride in supplying reliable steel solutions backed by consistent quality, transparent service, and customer-first values all over the world.",
+    labels: ["Steel", "Industrial", "Machinery", "Global"],
+    image: "/image/engineering_category_v2.png",
     subProducts: [
       {
         name: "Industrial Steel Solutions",
-        labels: ["MS/SS", "Custom Grades", "High Tensile"],
-        description: "Leading wholesaler and exporter of high-quality mild steel, top-grade plates, and stainless steel products.",
+        labels: ["Custom Grades", "High Tensile"],
+        description: "VEL WORLD can provide steel in custom grades, sizes and lengths in container loads. Products include Rounds, Bright Bars, Hexagons, Flats, Rectangular Steel Bars, Crane Rails, Dowell Bars, etc.",
         image: "/image/steel_industrial.png",
         specs: {
           varieties: ["Rounds", "Bright Bars", "Hexagons", "Flats", "Rectangular Steel Bars"],
-          sizing: "Custom sizes, lengths, and container loads available",
-          features: ["Metals & Alloys", "Automobiles & Components", "Industrial Machinery"]
+          features: [
+            "Metals & Alloys: Iron, Steel, Aluminium, Copper",
+            "Automobiles & Components",
+            "Industrial Machinery: Engines, Boilers, Pumps",
+            "Electrical: Generators, Transformers"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    id: "leather",
+    title: "Leather Goods",
+    description: "VEL WORLD is a trusted leather products exporter in India, specializing in crafting premium custom leather bags, wallet, shoes, belt, Jackets, designed to meet the unique needs of global brands.",
+    labels: ["Premium", "Handcrafted", "Bespoke", "Genuine"],
+    image: "/image/leather_category.png",
+    subProducts: [
+      {
+        name: "Best Leather Products",
+        labels: ["Custom Shades", "Unique Designs"],
+        description: "We use high-quality leather for all our leather manufactured products ensuring durability, long-lasting quality, and style. Customized color shades, designs, patterns, and sizes available.",
+        image: "/image/leather_product_detail.png",
+        specs: {
+          varieties: ["Bags", "Wallets", "Shoes", "Belts", "Jackets"],
+          features: ["Custom Color Shades", "Unique Designs", "Pattern Customization", "Size Customization"]
         }
       }
     ]
