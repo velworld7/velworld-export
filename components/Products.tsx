@@ -323,7 +323,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
     };
 
     return (
-      <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8">
+      <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8">
         <div className="absolute inset-0 bg-black/60 backdrop-blur-md animate-fade-in" onClick={onClose} />
         <div className="relative w-full max-w-4xl bg-white rounded-[3rem] overflow-hidden shadow-2xl animate-apple-up border border-black/5">
           <button onClick={onClose} className="absolute top-8 right-8 z-20 p-3 bg-black/5 hover:bg-black/10 rounded-full text-black transition-all">
