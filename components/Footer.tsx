@@ -50,9 +50,36 @@ const Footer: React.FC = () => {
     );
   };
 
+  const LegalModal = ({ title, onClose }: { title: string; onClose: () => void }) => (
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={onClose} />
+      <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl border border-black/5 animate-apple-up max-h-[80vh] overflow-y-auto">
+        <button onClick={onClose} className="absolute top-8 right-8 p-3 bg-black/5 rounded-full hover:bg-black/10 transition-all">
+          <X size={20} />
+        </button>
+        <h3 className="text-4xl font-bebas tracking-tight text-[var(--text)] uppercase mb-8">{title}</h3>
+        <div className="prose prose-lg text-[var(--text-secondary)] font-medium">
+          <p>
+            This is a standard {title} agreement for VEL WORLD TRADING PVT LTD.
+            We are committed to protecting your rights and ensuring transparency in all our global trade operations.
+          </p>
+          <p className="mt-4">
+            For detailed inquiries regarding our legal policies, please contact our legal department at contact@velworld.com.
+          </p>
+          <p className="mt-4 italic opacity-60 text-sm">
+            Last updated: 2025
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const [legalModal, setLegalModal] = useState<{ isOpen: boolean; title: string }>({ isOpen: false, title: '' });
+
   return (
     <footer className="bg-[var(--bg)] pt-32 pb-16 border-t border-[var(--border)] relative transition-colors duration-700">
       {showCareerModal && <CareerModal />}
+      {legalModal.isOpen && <LegalModal title={legalModal.title} onClose={() => setLegalModal({ isOpen: false, title: '' })} />}
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-0 items-start mb-32">
@@ -128,8 +155,8 @@ const Footer: React.FC = () => {
 
           <div className="flex items-center gap-12">
             <div className="flex gap-10 text-[var(--text-secondary)] text-[10px] tracking-[0.4em] uppercase font-bold">
-              <a href="#" className="hover:text-[var(--text)] transition-colors">Privacy</a>
-              <a href="#" className="hover:text-[var(--text)] transition-colors">Terms</a>
+              <button onClick={() => setLegalModal({ isOpen: true, title: 'Privacy Policy' })} className="hover:text-[var(--text)] transition-colors uppercase">Privacy</button>
+              <button onClick={() => setLegalModal({ isOpen: true, title: 'Terms of Service' })} className="hover:text-[var(--text)] transition-colors uppercase">Terms</button>
             </div>
             <button onClick={scrollToTop} className="p-4 bg-[var(--text)]/[0.03] hover:bg-[var(--text)] rounded-full text-[var(--text)] hover:text-[var(--bg)] transition-all shadow-sm">
               <ArrowUp size={20} />
@@ -140,5 +167,4 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
 export default Footer;
