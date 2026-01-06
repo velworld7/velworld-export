@@ -206,18 +206,43 @@ const categories: Category[] = [
     image: "/image/engineering_category_v2.png",
     subProducts: [
       {
-        name: "Industrial Steel Solutions",
-        labels: ["Custom Grades", "High Tensile"],
-        description: "VEL WORLD can provide steel in custom grades, sizes and lengths in container loads. Products include Rounds, Bright Bars, Hexagons, Flats, Rectangular Steel Bars, Crane Rails, Dowell Bars, etc.",
-        image: "/image/steel_industrial.png",
+        name: "Metals & Alloys",
+        labels: ["Iron", "Steel", "Aluminium", "Copper"],
+        description: "Significant exports of high-quality iron, steel, aluminium, and copper products for global industries.",
+        image: "/image/metals_alloys.png",
         specs: {
-          varieties: ["Rounds", "Bright Bars", "Hexagons", "Flats", "Rectangular Steel Bars"],
-          features: [
-            "Metals & Alloys: Iron, Steel, Aluminium, Copper",
-            "Automobiles & Components",
-            "Industrial Machinery: Engines, Boilers, Pumps",
-            "Electrical: Generators, Transformers"
-          ]
+          varieties: ["Iron", "Steel", "Aluminium", "Copper"],
+          features: ["High Purity", "Custom Alloys", "Industrial Grade"]
+        }
+      },
+      {
+        name: "Automobiles & Components",
+        labels: ["Cars", "Motorcycles", "Auto Parts"],
+        description: "Major exports of cars, motorcycles, and a vast array of precision-engineered auto parts.",
+        image: "/image/auto_components.png",
+        specs: {
+          varieties: ["Passenger Vehicles", "Two-Wheelers", "Commercial Vehicles"],
+          features: ["OEM Standards", "High Performance", "Global Compliance"]
+        }
+      },
+      {
+        name: "Industrial Machinery",
+        labels: ["Engines", "Pumps", "Textile", "Construction"],
+        description: "Includes IC engines, boilers, pumps, textile machinery, construction equipment, and food processing machinery.",
+        image: "/image/industrial_machinery.png",
+        specs: {
+          varieties: ["IC Engines", "Boilers", "Pumps", "Textile Machinery", "Construction Equipment"],
+          features: ["Heavy Duty", "High Efficiency", "Advanced Technology"]
+        }
+      },
+      {
+        name: "Electrical & Electronics",
+        labels: ["Generators", "Transformers", "Motors"],
+        description: "Supplying generators, transformers, switchgear, motors, and consumer electronics to international markets.",
+        image: "/image/electrical_electronics.png",
+        specs: {
+          varieties: ["Generators", "Transformers", "Switchgear", "Motors", "Consumer Electronics"],
+          features: ["Energy Efficient", "Safety Certified", "Modern Design"]
         }
       }
     ]
