@@ -2,7 +2,7 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="relative py-40 bg-[var(--bg)] overflow-hidden border-t border-[var(--border)] transition-colors duration-700">
+    <section id="about" className="relative py-20 bg-[var(--bg)] overflow-hidden border-t border-[var(--border)] transition-colors duration-700">
       {/* Premium subtle light background elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0066cc]/[0.03] blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/[0.03] blur-[150px] rounded-full pointer-events-none" />
@@ -17,7 +17,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Identity Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start mb-48">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start mb-24">
           <div className="lg:col-span-7 space-y-12 opacity-0 animate-apple-in" style={{ animationDelay: '0.3s' }}>
             <p className="text-3xl md:text-5xl text-[var(--text)] font-semibold leading-tight tracking-tight text-balance">
               Building a <span className="text-[#0066cc]">seamless corridor</span> for global trade through trust and precision.

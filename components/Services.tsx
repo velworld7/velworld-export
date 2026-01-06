@@ -37,7 +37,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-40 bg-[var(--bg)] transition-colors duration-700">
+    <section id="services" className="py-20 bg-[var(--bg)] transition-colors duration-700">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="text-center mb-28">
           <span className="text-[#0066cc] font-bold uppercase tracking-[0.5em] text-[11px] mb-6 block">End-to-End Solutions</span>
