@@ -628,7 +628,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
                     {/* Inquiry Box Button - Product Level */}
                     <div className="pt-8 border-t border-black/5 flex items-center justify-between">
-                      <span className="text-[10px] font-bold tracking-[0.4em] text-black/10 uppercase">Standard Export Grade</span>
+                      <span className="text-[10px] font-bold tracking-[0.4em] text-black/60 uppercase">Standard Export Grade</span>
                       <button onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: sub.name }); }} className="px-6 py-3 bg-black/[0.03] hover:bg-[#0066cc] hover:text-white rounded-full text-[9px] font-black tracking-[0.4em] uppercase transition-all flex items-center gap-2 active:scale-95">
                         Inquire
                         <MessageSquare size={12} />
