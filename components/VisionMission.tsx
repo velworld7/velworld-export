@@ -10,7 +10,7 @@ const VisionMission: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-32 opacity-0 animate-apple-in">
-          <span className="text-[12px] font-bold tracking-[0.5em] text-[#0066cc] uppercase mb-6 block">Foundation & Trust</span>
+
           <h3 className="text-6xl md:text-8xl font-bebas tracking-tight text-[var(--text)] transition-colors duration-700 uppercase">OUR GLOBAL STANDARDS</h3>
           <div className="w-48 h-1 bg-gradient-to-r from-transparent via-[#0066cc] to-transparent mx-auto mt-8 opacity-20" />
         </div>
