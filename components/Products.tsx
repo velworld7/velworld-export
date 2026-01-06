@@ -408,7 +408,10 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
   // Handle Browser Back Button for Category & Product Modal
   useEffect(() => {
     const handlePopState = () => {
-      if (activeSubProduct) {
+      // Priority: Enquiry -> SubProduct -> Category
+      if (showEnquiry.isOpen) {
+        setShowEnquiry({ ...showEnquiry, isOpen: false });
+      } else if (activeSubProduct) {
         setActiveSubProduct(null);
       } else if (activeCatId) {
         onSelectCategory(null);
@@ -417,26 +420,29 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
 
     window.addEventListener('popstate', handlePopState);
 
-    // Push state when opening category or product
-    if (activeCatId && !activeSubProduct) {
-      // Only push if we aren't already there? 
-      // Simple implementation: Just let browser stack build up, but careful not to loop
-      // We can use replaceState if we want to update the URL without pushing
-      // But user WANTS to push so Back button works.
-      // We'll manage this by only pushing if `history.state` doesn't match
+    // Push state when opening category
+    if (activeCatId && !activeSubProduct && !showEnquiry.isOpen) {
       if (history.state?.view !== 'category') {
         window.history.pushState({ view: 'category' }, '');
       }
     }
 
-    if (activeSubProduct) {
+    // Push state when opening sub-product
+    if (activeSubProduct && !showEnquiry.isOpen) {
       if (history.state?.view !== 'product') {
         window.history.pushState({ view: 'product' }, '');
       }
     }
 
+    // Push state when opening enquiry modal
+    if (showEnquiry.isOpen) {
+      if (history.state?.view !== 'enquiry') {
+        window.history.pushState({ view: 'enquiry' }, '');
+      }
+    }
+
     return () => window.removeEventListener('popstate', handlePopState);
-  }, [activeCatId, activeSubProduct, onSelectCategory]);
+  }, [activeCatId, activeSubProduct, onSelectCategory, showEnquiry]);
 
   const EnquiryModal = ({ productType, onClose }: { productType: string; onClose: () => void }) => {
     const [formData, setFormData] = useState({
