@@ -35,7 +35,7 @@ const categories: Category[] = [
       {
         name: "Onion",
         labels: ["Red", "Yellow", "Dehydrated"],
-        description: "Fresh, pungent onions with extended shelf life, packed for global transit standards.",
+        description: "Fresh Red onions with extended shelf life, packed for global transit standards.",
         image: "/image/onion.png",
         specs: {
           sizing: "Red Onion size varies from 20mm to 70mm",
