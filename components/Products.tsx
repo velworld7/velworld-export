@@ -28,7 +28,7 @@ const categories: Category[] = [
   {
     id: "agri",
     title: "Agricultural Products",
-    description: "Premium grains, pulses, and farm-fresh spices sourced from India's most fertile belts.",
+    description: "Export grade onions, grains, pulses, spices and other farm-fresh agricultural products from India.",
     labels: ["Organic", "Farm-Fresh", "Export Grade"],
     image: "/image/agri_category.png",
     subProducts: [
@@ -153,7 +153,7 @@ const categories: Category[] = [
   {
     id: "coco",
     title: "Coconut Based Products",
-    description: "Superior quality mature coconuts, desiccated powder, and cold-pressed virgin oils.",
+    description: "Coco peat blocks, coir pith, coir fibre and grow bags for horticulture and hydroponics buyers worldwide.",
     labels: ["Mature", "Organic", "Certified"],
     image: "/image/coco_category_v2.png",
     subProducts: [
@@ -178,7 +178,7 @@ const categories: Category[] = [
   {
     id: "match",
     title: "Safety Matches",
-    description: "VEL WORLD offer many types of matches, including wax safety matches, kitchen safety matches, veneer safety matches, wooden safety matches, cardboard safety matches, and long barbecue safety matches to customers worldwide.",
+    description: "Wax and cardboard safety matches with long-burn performance and private labelling for global brands.",
     labels: ["Wax", "Cardboard", "Long-Burn", "Private Labelling"],
     image: "/image/match_category.png",
     subProducts: [
@@ -229,7 +229,7 @@ const categories: Category[] = [
   {
     id: "eng",
     title: "Engineering Products",
-    description: "VEL WORLD is a leading wholesaler and exporter of high-quality mild steel, top-grade plates, stainless steel products, and industrial steel materials. We take great pride in supplying reliable steel solutions backed by consistent quality, transparent service, and customer-first values all over the world.",
+    description: "Industrial steel components and machinery solutions for international engineering and manufacturing clients.",
     labels: ["Steel", "Industrial", "Machinery", "Global"],
     image: "/image/engineering_category_v2.png",
     subProducts: [
@@ -278,7 +278,7 @@ const categories: Category[] = [
   {
     id: "leather",
     title: "Leather Goods",
-    description: "VEL WORLD is a trusted leather products exporter in India, specializing in crafting premium custom leather bags, wallet, shoes, belt, Jackets, designed to meet the unique needs of global brands.",
+    description: "Premium handcrafted leather bags, wallets and accessories tailored for international retail and private labels.",
     labels: ["Premium", "Handcrafted", "Bespoke", "Genuine"],
     image: "/image/leather_category.png",
     subProducts: [
@@ -336,8 +336,8 @@ const categories: Category[] = [
   },
   {
     id: "app",
-    title: "Apparells & Garments",
-    description: "VEL WORLD is powering high-fashion brands across the world, delivering unmatched excellence across the garment industry.",
+    title: "Apparels & Garments",
+    description: "Cotton knitwear, fashion garments and bespoke apparel manufactured in India for global clothing brands.",
     labels: ["Cotton", "Knitwear", "Fashion", "Bespoke"],
     image: "/image/app_category.png",
     subProducts: [
@@ -376,7 +376,7 @@ const categories: Category[] = [
   {
     id: "build",
     title: "Building & Construction",
-    description: "Largest exporters of granite and pioneers of the stone fraternity worldwide.",
+    description: "Granite, tiles, sandstone and PVC products for construction, infrastructure and interior projects worldwide.",
     labels: ["Granite", "Tiles", "Sandstone", "PVC"],
     image: "/image/build_category.png",
     subProducts: [
@@ -587,7 +587,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
         </button>
 
         <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px]">
-          <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={product.image} alt={`${product.name} export detail`} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-100" />
           <div className="absolute bottom-8 left-6 md:bottom-12 md:left-12 pr-6">
             <h3 className="text-5xl md:text-8xl font-bebas text-white tracking-tight uppercase leading-none drop-shadow-2xl shadow-black text-shadow-lg">{product.name}</h3>
@@ -694,8 +694,8 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
               <div className="opacity-0 animate-apple-in">
                 <span className="text-[#0066cc] font-bold tracking-[0.5em] uppercase text-[11px] mb-6 block">Our Global Catalog</span>
                 <h2 className="text-[14vw] md:text-[8vw] lg:text-[7vw] font-bebas leading-[0.8] tracking-tight text-[var(--text)] uppercase mb-4">
-                  WORLD-CLASS <br />
-                  <span className="text-[#0066cc]/40">PORTFOLIO</span>
+                  World-Class <br />
+                  <span className="text-[#0066cc]/40">Export Portfolio</span>
                 </h2>
               </div>
             </div>
@@ -733,7 +733,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
             {categories.map((cat, idx) => (
               <div key={cat.id} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${0.3 + (idx * 0.1)}s` }}>
                 <div className="relative aspect-[3/4] overflow-hidden rounded-[3.5rem] bg-white border border-black/5 shadow-premium transition-all duration-700 hover:-translate-y-6 hover:shadow-[0_60px_100px_rgba(0,0,0,0.1)] cursor-pointer" onClick={() => { onSelectCategory(cat.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  <img src={cat.image} alt={cat.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" loading="lazy" />
+                  <img src={cat.image} alt={`${cat.title} export from India`} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
                   <div className="absolute inset-0 p-12 flex flex-col justify-end">
                     <div className="flex flex-wrap gap-3 mb-8">
@@ -750,7 +750,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                 {/* Inquiry Box Button - Category Level */}
                 <div className="mt-6 flex justify-end px-4">
                   <button onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: cat.title }); }} className="px-8 py-4 glass-card rounded-full border border-black/5 shadow-premium text-[9px] font-black tracking-[0.4em] uppercase text-[#1d1d1f] hover:bg-black hover:text-white transition-all flex items-center gap-3 active:scale-95">
-                    Quick Inquiry
+                    Quick Export Inquiry
                     <MessageSquare size={14} className="opacity-40" />
                   </button>
                 </div>
@@ -763,7 +763,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
               <div key={idx} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${idx * 0.05}s` }}>
                 <div className="bg-white rounded-[3.5rem] overflow-hidden border border-black/5 group-hover:border-[#0066cc]/20 transition-all duration-500 flex flex-col h-full shadow-premium cursor-pointer relative" onClick={() => setActiveSubProduct(sub)}>
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <img src={sub.image} alt={sub.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+                    <img src={sub.image} alt={`${sub.name} export product from India`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-8 flex flex-wrap gap-2">
                       {sub.labels.map((lbl, lidx) => (
@@ -784,7 +784,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                     <div className="pt-8 border-t border-black/5 flex items-center justify-between">
                       <span className="text-[10px] font-bold tracking-[0.4em] text-black/60 uppercase">Standard Export Grade</span>
                       <button onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: sub.name }); }} className="px-6 py-3 bg-black/[0.03] hover:bg-[#0066cc] hover:text-white rounded-full text-[9px] font-black tracking-[0.4em] uppercase transition-all flex items-center gap-2 active:scale-95">
-                        Inquire
+                        Inquire Now
                         <MessageSquare size={12} />
                       </button>
                     </div>

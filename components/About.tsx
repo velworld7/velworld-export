@@ -37,7 +37,7 @@ const About: React.FC = () => {
             <div className="aspect-[4/5] overflow-hidden rounded-[4rem] border border-[var(--border)] relative shadow-premium transition-all duration-700 hover:scale-[1.03] glass-card">
               <img
                 src="/image/global_logistics.png"
-                alt="Global Logistics Excellence"
+                alt="Global logistics and shipping for export cargo"
                 className="w-full h-full object-cover grayscale opacity-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-80" />

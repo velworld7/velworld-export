@@ -22,9 +22,9 @@ const VisionMission: React.FC = () => {
               <div className="mb-10 p-8 bg-[#0066cc]/[0.05] rounded-[2rem] group-hover:bg-[#0066cc]/[0.1] transition-colors">
                 <Target size={56} className="text-[#0066cc]" strokeWidth={1.5} />
               </div>
-              <h4 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">OUR VISION</h4>
+              <h2 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">Our Vision</h2>
               <p className="text-[var(--text-secondary)] leading-relaxed font-medium text-lg text-balance">
-                To bridge between world markets and Indian excellence, pioneering a new era of global growth through constant innovation.
+                We connect global buyers with Indian excellence in agro, coconut, matches, engineering, leather, garments and construction products, focusing on long-term partnerships across Europe, Middle East, Asia and the Americas.
               </p>
 
             </div>
@@ -36,9 +36,9 @@ const VisionMission: React.FC = () => {
               <div className="mb-10 p-8 bg-indigo-500/[0.05] rounded-[2rem] group-hover:bg-indigo-500/[0.1] transition-colors">
                 <Compass size={56} className="text-indigo-500" strokeWidth={1.5} />
               </div>
-              <h4 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">OUR MISSION</h4>
+              <h2 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">Our Mission</h2>
               <p className="text-[var(--text-secondary)] leading-relaxed font-medium text-lg text-balance">
-                Deliver premium quality products with assured safety, transparent pricing, and 100% international compliance at every step.
+                Our mission is to deliver export-grade products from India with strict quality checks, transparent pricing and full international compliance across documentation, logistics and delivery.
               </p>
 
             </div>
@@ -50,11 +50,11 @@ const VisionMission: React.FC = () => {
               <div className="mb-10 p-8 bg-blue-500/[0.05] rounded-[2rem] group-hover:bg-blue-500/[0.1] transition-colors">
                 <Star size={56} className="text-[#007aff]" strokeWidth={1.5} />
               </div>
-              <h4 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">OUR PROMISES</h4>
+              <h2 className="text-4xl font-bebas tracking-widest text-[var(--text)] mb-8 uppercase">Our Promises</h2>
               <div className="space-y-6 w-full">
-                {['Guaranteed Quality', 'Total Transparency', 'Global Reach'].map((text, i) => (
+                {['Guaranteed quality on every export shipment.', 'Total transparency in pricing, documentation and logistics.', 'Global reach across major importing markets worldwide.'].map((text, i) => (
                   <div key={i} className="flex flex-col items-center">
-                    <span className="text-[var(--text)] font-bold text-[12px] tracking-[0.4em] uppercase mb-2">{text}</span>
+                    <span className="text-[var(--text)] font-bold text-[12px] tracking-[0.05em] uppercase mb-2 text-center text-balance">{text}</span>
                     <div className="h-0.5 w-10 bg-[#0066cc]/40" />
                   </div>
                 ))}

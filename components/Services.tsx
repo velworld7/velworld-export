@@ -6,32 +6,32 @@ const services = [
   {
     icon: Globe2,
     title: "Global Sourcing",
-    desc: "Sourcing high-quality products across continents with a strong manufacturer network."
+    desc: "Sourcing high-quality products across continents with a strong manufacturer network for export."
   },
   {
     icon: ShieldCheck,
     title: "Quality Checks",
-    desc: "Conducting strict quality checks to ensure products meet international standards."
+    desc: "Conducting strict quality checks to ensure products meet international export standards."
   },
   {
     icon: FileText,
     title: "Documentation",
-    desc: "Expert handling of complex documentation and compliance requirements for every region."
+    desc: "Expert handling of complex documentation and compliance requirements for every export region."
   },
   {
     icon: Package,
     title: "Premium Packaging",
-    desc: "Ensuring safety during transit with specialized international packaging solutions."
+    desc: "Ensuring safety during transit with specialized international packaging solutions for exports."
   },
   {
     icon: Ship,
     title: "Intl. Shipping",
-    desc: "Comprehensive logistics management for timely delivery across the world."
+    desc: "Comprehensive logistics management for timely delivery across the world's major ports."
   },
   {
     icon: SearchCode,
     title: "Transparent Tracking",
-    desc: "Real-time updates and clear communication at every stage of the export process."
+    desc: "Real-time updates and clear communication at every stage of the export trade process."
   }
 ];
 
