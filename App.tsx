@@ -20,6 +20,39 @@ const App: React.FC = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Handle initial navigation based on URL path
+    const path = window.location.pathname;
+    if (path !== '/' && path.length > 1) {
+      const sectionId = path.substring(1); // remove leading slash
+      // Map common paths to section IDs if they differ, or use direct mapping
+      const sectionMap: Record<string, string> = {
+        'about': 'about',
+        'services': 'services',
+        'contact': 'contact',
+        'products': 'products',
+        'vision': 'vision'
+      };
+
+      const targetId = sectionMap[sectionId] || sectionId;
+      
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 500); // Small delay to ensure components are mounted
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
