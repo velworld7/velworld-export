@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://velworld.net/sitemap.xml
+Sitemap: https://www.velworld.net/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
