@@ -37,8 +37,10 @@ const Contact: React.FC = () => {
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left opacity-0 animate-apple-in" style={{ animationDelay: '0.2s' }}>
           <div className="space-y-10">
             <div className="group">
-              <label className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Full Identity</label>
+              <label htmlFor="name" className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Full Identity</label>
               <input
+                id="name"
+                name="name"
                 required
                 type="text"
                 placeholder="YOUR NAME"
@@ -48,8 +50,10 @@ const Contact: React.FC = () => {
               />
             </div>
             <div className="group">
-              <label className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Communication</label>
+              <label htmlFor="email" className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Communication</label>
               <input
+                id="email"
+                name="email"
                 required
                 type="email"
                 placeholder="EMAIL ADDRESS"
@@ -62,8 +66,10 @@ const Contact: React.FC = () => {
 
           <div className="space-y-10">
             <div className="group">
-              <label className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Inquiry Nature</label>
+              <label htmlFor="natureOfInquiry" className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Inquiry Nature</label>
               <input
+                id="natureOfInquiry"
+                name="natureOfInquiry"
                 required
                 type="text"
                 placeholder="NATURE OF INQUIRY"
@@ -73,8 +79,10 @@ const Contact: React.FC = () => {
               />
             </div>
             <div className="group">
-              <label className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Corporate Entity</label>
+              <label htmlFor="companyName" className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Corporate Entity</label>
               <input
+                id="companyName"
+                name="companyName"
                 required
                 type="text"
                 placeholder="COMPANY NAME"
@@ -86,8 +94,10 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="md:col-span-2 group">
-            <label className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Message Specification</label>
+            <label htmlFor="message" className="text-[10px] font-black tracking-[0.4em] text-[var(--text)] opacity-40 uppercase mb-4 block ml-4 group-focus-within:opacity-100 group-focus-within:text-[var(--accent)] transition-all">Message Specification</label>
             <textarea
+              id="message"
+              name="message"
               required
               placeholder="PLEASE ENTER YOUR DETAILED MESSAGE"
               rows={6}
@@ -100,6 +110,7 @@ const Contact: React.FC = () => {
           <div className="md:col-span-2 flex justify-center mt-12">
             <button
               type="submit"
+              aria-label="Submit Global Inquiry"
               className="group w-full md:w-auto px-28 py-8 bg-[var(--text)] text-[var(--bg)] rounded-full font-black tracking-[0.6em] uppercase text-[11px] hover:scale-105 active:scale-95 transition-all shadow-premium flex items-center justify-center gap-6"
             >
               Submit Inquiry

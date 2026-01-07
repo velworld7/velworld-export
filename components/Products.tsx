@@ -733,7 +733,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
             {categories.map((cat, idx) => (
               <div key={cat.id} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${0.3 + (idx * 0.1)}s` }}>
                 <div className="relative aspect-[3/4] overflow-hidden rounded-[3.5rem] bg-white border border-black/5 shadow-premium transition-all duration-700 hover:-translate-y-6 hover:shadow-[0_60px_100px_rgba(0,0,0,0.1)] cursor-pointer" onClick={() => { onSelectCategory(cat.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  <img src={cat.image} alt={`${cat.title} export from India`} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" loading="lazy" />
+                  <img src={cat.image} alt={`${cat.title} export from India`} className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" loading="lazy" width="400" height="533" />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
                   <div className="absolute inset-0 p-12 flex flex-col justify-end">
                     <div className="flex flex-wrap gap-3 mb-8">
@@ -742,14 +742,14 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                       ))}
                     </div>
                     <div className="flex items-center justify-between border-b border-black/10 pb-6">
-                      <h4 className="text-4xl md:text-5xl font-bebas tracking-tight text-[#1d1d1f] uppercase group-hover:text-[#0066cc] transition-colors">{cat.title}</h4>
+                      <h3 className="text-4xl md:text-5xl font-bebas tracking-tight text-[#1d1d1f] uppercase group-hover:text-[#0066cc] transition-colors">{cat.title}</h3>
                       <ArrowUpRight size={28} className="text-[#0066cc] opacity-0 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                   </div>
                 </div>
                 {/* Inquiry Box Button - Category Level */}
                 <div className="mt-6 flex justify-end px-4">
-                  <button onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: cat.title }); }} className="px-8 py-4 glass-card rounded-full border border-black/5 shadow-premium text-[9px] font-black tracking-[0.4em] uppercase text-[#1d1d1f] hover:bg-black hover:text-white transition-all flex items-center gap-3 active:scale-95">
+                  <button aria-label={`Inquire about ${cat.title}`} onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: cat.title }); }} className="px-8 py-4 glass-card rounded-full border border-black/5 shadow-premium text-[9px] font-black tracking-[0.4em] uppercase text-[#1d1d1f] hover:bg-black hover:text-white transition-all flex items-center gap-3 active:scale-95">
                     Quick Export Inquiry
                     <MessageSquare size={14} className="opacity-40" />
                   </button>
@@ -763,7 +763,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
               <div key={idx} className="group opacity-0 animate-apple-in" style={{ animationDelay: `${idx * 0.05}s` }}>
                 <div className="bg-white rounded-[3.5rem] overflow-hidden border border-black/5 group-hover:border-[#0066cc]/20 transition-all duration-500 flex flex-col h-full shadow-premium cursor-pointer relative" onClick={() => setActiveSubProduct(sub)}>
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <img src={sub.image} alt={`${sub.name} export product from India`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+                    <img src={sub.image} alt={`${sub.name} export product from India`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" width="600" height="375" />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-8 flex flex-wrap gap-2">
                       {sub.labels.map((lbl, lidx) => (
@@ -773,7 +773,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                   </div>
                   <div className="p-10 flex flex-col flex-grow">
                     <div className="flex items-center justify-between mb-6">
-                      <h4 className="text-5xl font-bebas tracking-tight text-[#1d1d1f] uppercase group-hover:text-[#0066cc] transition-colors">{sub.name}</h4>
+                      <h3 className="text-5xl font-bebas tracking-tight text-[#1d1d1f] uppercase group-hover:text-[#0066cc] transition-colors">{sub.name}</h3>
                       <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center group-hover:bg-[#0066cc] transition-colors">
                         <ArrowUpRight size={20} className="text-[#0066cc] group-hover:text-white transition-colors" />
                       </div>
@@ -783,7 +783,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
                     {/* Inquiry Box Button - Product Level */}
                     <div className="pt-8 border-t border-black/5 flex items-center justify-between">
                       <span className="text-[10px] font-bold tracking-[0.4em] text-black/60 uppercase">Standard Export Grade</span>
-                      <button onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: sub.name }); }} className="px-6 py-3 bg-black/[0.03] hover:bg-[#0066cc] hover:text-white rounded-full text-[9px] font-black tracking-[0.4em] uppercase transition-all flex items-center gap-2 active:scale-95">
+                      <button aria-label={`Inquire about ${sub.name}`} onClick={(e) => { e.stopPropagation(); setShowEnquiry({ isOpen: true, product: sub.name }); }} className="px-6 py-3 bg-black/[0.03] hover:bg-[#0066cc] hover:text-white rounded-full text-[9px] font-black tracking-[0.4em] uppercase transition-all flex items-center gap-2 active:scale-95">
                         Inquire Now
                         <MessageSquare size={12} />
                       </button>

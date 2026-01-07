@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VisionMission from './components/VisionMission';
-import Products from './components/Products';
-import About from './components/About';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import Chatbot from './components/Chatbot';
+
+// Lazy load below-the-fold components for performance
+const Products = React.lazy(() => import('./components/Products'));
+const About = React.lazy(() => import('./components/About'));
+const Services = React.lazy(() => import('./components/Services'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const Footer = React.lazy(() => import('./components/Footer'));
+const WhatsAppButton = React.lazy(() => import('./components/WhatsAppButton'));
+const Chatbot = React.lazy(() => import('./components/Chatbot'));
+
+// Loading fallback
+const SectionLoader = () => <div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-[#0066cc] border-t-transparent rounded-full animate-spin"></div></div>;
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +40,8 @@ const App: React.FC = () => {
       };
 
       const targetId = sectionMap[sectionId] || sectionId;
-      
+
+      // Increased delay slightly to allow for lazy loaded chunks
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
@@ -50,7 +56,7 @@ const App: React.FC = () => {
             behavior: 'smooth'
           });
         }
-      }, 500); // Small delay to ensure components are mounted
+      }, 800);
     }
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -73,23 +79,31 @@ const App: React.FC = () => {
         )}
 
         <div className={activeCategory ? "pt-24 min-h-[70vh]" : ""}>
-          <Products activeCatId={activeCategory} onSelectCategory={setActiveCategory} />
+          <Suspense fallback={<SectionLoader />}>
+            <Products activeCatId={activeCategory} onSelectCategory={setActiveCategory} />
+          </Suspense>
         </div>
 
         {!activeCategory && (
-          <>
+          <Suspense fallback={<SectionLoader />}>
             <About />
             <Services />
             <Contact />
-          </>
+          </Suspense>
         )}
       </main>
 
-      {!activeCategory && <Footer />}
+      {!activeCategory && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
 
       {/* Persistent Floating Elements */}
-      <WhatsAppButton />
-      <Chatbot />
+      <Suspense fallback={null}>
+        <WhatsAppButton />
+        <Chatbot />
+      </Suspense>
     </div>
   );
 };
