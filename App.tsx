@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import HomeSEO from './components/HomeSEO';
+
 import VisionMission from './components/VisionMission';
 
 // Lazy load below-the-fold components for performance
@@ -75,7 +75,7 @@ const App: React.FC = () => {
         {!activeCategory && (
           <>
             <Hero />
-            <HomeSEO />
+
             <VisionMission />
           </>
         )}
