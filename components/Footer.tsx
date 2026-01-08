@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
                     <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
                       <MapPin size={20} className="text-[#0066cc]" />
                     </div>
-                    <span className="leading-relaxed">Global Headquarters, International Trade District, Floor 24, India</span>
+                    <span className="leading-relaxed">India</span>
                   </li>
                   <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
                     <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
