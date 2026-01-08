@@ -5,14 +5,14 @@
             "headers": {
                 "Content-Type": "application/xml"
             },
-            "dest": "/sitemap.xml"
+            "dest": "/dist/sitemap.xml"
         },
         {
             "src": "/robots.txt",
             "headers": {
                 "Content-Type": "text/plain"
             },
-            "dest": "/robots.txt"
+            "dest": "/dist/robots.txt"
         },
         {
             "src": "/(.*)",
