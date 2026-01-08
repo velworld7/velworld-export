@@ -27,20 +27,13 @@ const Hero: React.FC = () => {
       <div className="relative z-20 w-full max-w-[95rem] px-6 mx-auto flex flex-col items-center">
         <div className="text-center opacity-0 animate-apple-in" style={{ animationDelay: '0.4s' }}>
           <h1
-            className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-bebas leading-[0.9] tracking-tight text-white uppercase mb-4 transition-all duration-500 hover:scale-105 vel-world-title"
+            className="text-[14vw] md:text-[10vw] lg:text-[170px] font-bebas leading-[0.8] tracking-tight text-white uppercase mb-2 vel-world-title drop-shadow-2xl"
           >
-            VEL WORLD – Making global trade reliable, transparent, and efficient
+            VEL WORLD
           </h1>
-
-          {/* 
-             NOTE: The user requested a single H1. 
-             The previous H2 is being removed or merged as part of the H1 or a subtitle paragraph.
-             Since the H1 is now the full statement, we can use a paragraph for any extra tagline if needed,
-             but the user instructions imply the H1 itself should be that text.
-             However, typically a long sentence as H1 might look big. 
-             I will use the H1 for the main text as requested.
-          */}
-
+          <h2 className="text-[4vw] md:text-[2.5vw] lg:text-[2vw] font-bebas tracking-[0.2em] text-white/90 uppercase max-w-4xl mx-auto drop-shadow-lg">
+            Make global trade reliable, transparent, and efficient.
+          </h2>
         </div>
       </div>
 
