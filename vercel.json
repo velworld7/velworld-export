@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/google6e32b65a98aa04d7.html",
+            "destination": "/google6e32b65a98aa04d7.html"
+        },
+        {
             "source": "/sitemap.xml",
             "destination": "/sitemap.xml"
         },
