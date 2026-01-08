@@ -27,11 +27,11 @@ const Hero: React.FC = () => {
       <div className="relative z-20 w-full max-w-[95rem] px-6 mx-auto flex flex-col items-center">
         <div className="text-center opacity-0 animate-apple-in" style={{ animationDelay: '0.4s' }}>
           <h1
-            className="text-[12vw] md:text-[9vw] lg:text-[11rem] font-bebas leading-[0.85] tracking-tight text-white uppercase mb-4 vel-world-title"
+            className="text-[10vw] md:text-[8vw] lg:text-[7rem] font-bebas leading-[0.85] tracking-tight text-white uppercase mb-6 vel-world-title"
           >
             VEL WORLD
           </h1>
-          <h2 className="text-[4vw] md:text-[2.2vw] lg:text-[2.5rem] font-bebas tracking-[0.2em] text-white/95 uppercase max-w-5xl mx-auto drop-shadow-md">
+          <h2 className="text-[5vw] md:text-[3vw] lg:text-[3rem] font-bebas tracking-normal text-white/95 uppercase max-w-6xl mx-auto drop-shadow-md">
             Make global trade reliable, transparent, and efficient.
           </h2>
         </div>
