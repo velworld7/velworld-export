@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           >
             VEL WORLD
           </h1>
-          <h2 className="text-[3vw] md:text-[3vw] lg:text-[3rem] font-bebas tracking-normal text-white/95 uppercase max-w-6xl mx-auto drop-shadow-md whitespace-nowrap">
+          <h2 className="text-[5vw] md:text-[3vw] lg:text-[3rem] font-bebas tracking-normal text-white/95 uppercase max-w-6xl mx-auto drop-shadow-md whitespace-nowrap">
             Make global trade reliable, transparent, and efficient.
           </h2>
         </div>
