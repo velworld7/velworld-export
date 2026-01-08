@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
             We are committed to protecting your rights and ensuring transparency in all our global trade operations.
           </p>
           <p className="mt-4">
-            For detailed inquiries regarding our legal policies, please contact our legal department at contact@velworld.com.
+            For detailed inquiries regarding our legal policies, please contact our legal department at sales@velworld.net.
           </p>
           <p className="mt-4 italic opacity-60 text-sm">
             Last updated: 2025
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
                   <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
                     <Mail size={20} className="text-[#0066cc]" />
                   </div>
-                  <span>contact@velworld.com</span>
+                  <span>sales@velworld.net</span>
                 </li>
               </ul>
 
