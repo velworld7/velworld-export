@@ -25,7 +25,7 @@ const services = [
   },
   {
     icon: Ship,
-    title: "Intl. Shipping",
+    title: "International Shipping",
     desc: "Comprehensive logistics management for timely delivery across the world's major ports."
   },
   {
