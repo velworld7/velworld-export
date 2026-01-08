@@ -1,8 +1,22 @@
 {
-    "rewrites": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "/sitemap.xml",
+            "headers": {
+                "Content-Type": "application/xml"
+            },
+            "dest": "/dist/sitemap.xml"
+        },
+        {
+            "src": "/robots.txt",
+            "headers": {
+                "Content-Type": "text/plain"
+            },
+            "dest": "/dist/robots.txt"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/dist/index.html"
         }
     ]
 }

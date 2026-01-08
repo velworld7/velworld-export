@@ -105,43 +105,57 @@ const Footer: React.FC = () => {
           {/* RIGHT SIDE: CONTACT & CAREERS */}
           {/* RIGHT SIDE: CONTACT & CAREERS */}
           <div className="flex-1 w-full lg:pl-16">
-            <h4 className="text-[var(--text)] font-bold uppercase tracking-[0.4em] text-[11px] mb-10">Direct Contact</h4>
-            <div className="space-y-12">
-              <ul className="space-y-8">
-                <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
-                  <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
-                    <MapPin size={20} className="text-[#0066cc]" />
-                  </div>
-                  <span className="leading-relaxed">Global Headquarters, International Trade District, Floor 24, India</span>
-                </li>
-                <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
-                  <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
-                    <Phone size={20} className="text-[#0066cc]" />
-                  </div>
-                  <span>+91 95975 55560</span>
-                </li>
-                <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
-                  <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
-                    <Mail size={20} className="text-[#0066cc]" />
-                  </div>
-                  <span>sales@velworld.net</span>
-                </li>
-              </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* NAVIGATION LINKS */}
+              <div>
+                <h4 className="text-[var(--text)] font-bold uppercase tracking-[0.4em] text-[11px] mb-10">Quick Links</h4>
+                <ul className="space-y-6 text-[var(--text-secondary)] text-sm font-medium uppercase tracking-widest">
+                  <li><button onClick={() => { document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-[#0066cc] transition-colors">About Us</button></li>
+                  <li><button onClick={() => { document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-[#0066cc] transition-colors">Products</button></li>
+                  <li><button onClick={() => { document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-[#0066cc] transition-colors">Services</button></li>
+                  <li><button onClick={() => { document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-[#0066cc] transition-colors">Contact</button></li>
+                </ul>
+              </div>
 
-              {/* CAREER BOX */}
-              <div className="mt-16 p-10 bg-[var(--text)]/[0.02] border border-[var(--border)] rounded-[2.5rem] group hover:bg-[var(--text)] transition-all duration-700 cursor-pointer overflow-hidden relative" onClick={() => setShowCareerModal(true)}>
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                  <div>
-                    <h5 className="text-3xl font-bebas text-[var(--text)] group-hover:text-[var(--bg)] uppercase tracking-wider mb-2">JOIN VEL WORLD</h5>
-                    <p className="text-[var(--text-secondary)] group-hover:text-[var(--bg)]/60 text-xs font-bold uppercase tracking-widest">Exciting Career Opportunities</p>
-                  </div>
-                  <div className="p-5 bg-[var(--text)] group-hover:bg-[var(--bg)] rounded-2xl group-hover:scale-110 transition-all">
-                    <Briefcase size={24} className="text-[var(--bg)] group-hover:text-[var(--text)]" />
-                  </div>
+              {/* DIRECT CONTACT */}
+              <div>
+                <h4 className="text-[var(--text)] font-bold uppercase tracking-[0.4em] text-[11px] mb-10">Direct Contact</h4>
+                <ul className="space-y-8">
+                  <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
+                    <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
+                      <MapPin size={20} className="text-[#0066cc]" />
+                    </div>
+                    <span className="leading-relaxed">Global Headquarters, International Trade District, Floor 24, India</span>
+                  </li>
+                  <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
+                    <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
+                      <Phone size={20} className="text-[#0066cc]" />
+                    </div>
+                    <span>+91 95975 55560</span>
+                  </li>
+                  <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
+                    <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
+                      <Mail size={20} className="text-[#0066cc]" />
+                    </div>
+                    <span>sales@velworld.net</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* CAREER BOX */}
+            <div className="mt-16 p-10 bg-[var(--text)]/[0.02] border border-[var(--border)] rounded-[2.5rem] group hover:bg-[var(--text)] transition-all duration-700 cursor-pointer overflow-hidden relative" onClick={() => setShowCareerModal(true)}>
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <h5 className="text-3xl font-bebas text-[var(--text)] group-hover:text-[var(--bg)] uppercase tracking-wider mb-2">JOIN VEL WORLD</h5>
+                  <p className="text-[var(--text-secondary)] group-hover:text-[var(--bg)]/60 text-xs font-bold uppercase tracking-widest">Exciting Career Opportunities</p>
                 </div>
-                <div className="absolute top-0 right-0 p-10 opacity-0 group-hover:opacity-[0.05] translate-x-1/2 -translate-y-1/2 scale-[3] transition-all duration-1000">
-                  <Briefcase size={120} />
+                <div className="p-5 bg-[var(--text)] group-hover:bg-[var(--bg)] rounded-2xl group-hover:scale-110 transition-all">
+                  <Briefcase size={24} className="text-[var(--bg)] group-hover:text-[var(--text)]" />
                 </div>
+              </div>
+              <div className="absolute top-0 right-0 p-10 opacity-0 group-hover:opacity-[0.05] translate-x-1/2 -translate-y-1/2 scale-[3] transition-all duration-1000">
+                <Briefcase size={120} />
               </div>
             </div>
           </div>
