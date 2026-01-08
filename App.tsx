@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-
+import HomeSEO from './components/HomeSEO';
 import VisionMission from './components/VisionMission';
 
 // Lazy load below-the-fold components for performance
@@ -20,6 +20,7 @@ const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activePage, setActivePage] = useState<'home' | 'export-excellence'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,17 +68,40 @@ const App: React.FC = () => {
     setDarkMode(prev => !prev);
   };
 
+  const handleNavigate = (page: string) => {
+    if (page === 'export-excellence') {
+      setActivePage('export-excellence');
+      setActiveCategory(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setActivePage('home');
+      // If navigating to a section, scrolling is handled by Header
+    }
+  };
+
   return (
     <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'dark' : ''}`}>
-      <Header scrolled={scrolled} darkMode={darkMode} toggleDarkMode={toggleDarkMode} onResetCategory={() => setActiveCategory(null)} />
+      <Header
+        scrolled={scrolled}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        onResetCategory={() => setActiveCategory(null)}
+        onNavigate={handleNavigate}
+      />
 
       <main className="bg-[var(--bg)] transition-colors duration-700">
-        {!activeCategory && (
+        {activePage === 'home' && !activeCategory && (
           <>
             <Hero />
-
+            <HomeSEO />
             <VisionMission />
           </>
+        )}
+
+        {activePage === 'export-excellence' && (
+          <div className="pt-24 min-h-screen">
+            <HomeSEO />
+          </div>
         )}
 
         <div className={activeCategory ? "pt-24 min-h-[70vh]" : ""}>
@@ -86,7 +110,7 @@ const App: React.FC = () => {
           </Suspense>
         </div>
 
-        {!activeCategory && (
+        {activePage === 'home' && !activeCategory && (
           <Suspense fallback={<SectionLoader />}>
             <About />
             <Services />

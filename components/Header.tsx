@@ -7,9 +7,10 @@ interface HeaderProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
   onResetCategory?: () => void;
+  onNavigate?: (page: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onResetCategory }) => {
+const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onResetCategory, onNavigate }) => {
   const [isPulling, setIsPulling] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -21,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
 
   const navLinks = [
     { name: 'Home', id: 'hero' },
+    { name: 'Export Excellence', id: 'export-excellence', isPage: true },
     { name: 'Our Standards', id: 'vision' },
     { name: 'Global Portfolio', id: 'products' },
     { name: 'Our Identity', id: 'about' },
@@ -28,8 +30,16 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
     { name: 'Get In Touch', id: 'contact' },
   ];
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (link: { id: string; isPage?: boolean }) => {
     setIsNavOpen(false);
+
+    if (link.isPage) {
+      if (onNavigate) onNavigate(link.id);
+      return;
+    }
+
+    // Switch back to home if needed
+    if (onNavigate) onNavigate('home');
 
     // If we are in a sub-page (like products), reset to home view first
     if (onResetCategory) {
@@ -37,10 +47,10 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
 
       // Allow time for components to mount before scrolling
       setTimeout(() => {
-        findAndScroll(id);
+        findAndScroll(link.id);
       }, 100);
     } else {
-      findAndScroll(id);
+      findAndScroll(link.id);
     }
   };
 
@@ -87,6 +97,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
           <div
             onClick={() => {
               if (onResetCategory) onResetCategory();
+              if (onNavigate) onNavigate('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="relative h-12 md:h-16 lg:h-20 w-auto flex flex-col items-center justify-center cursor-pointer transition-all duration-700 hover:scale-105 active:scale-95 group"
@@ -155,7 +166,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
             {navLinks.map((link, idx) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => scrollToSection(link)}
                 className={`w-full group flex items-center justify-between p-6 rounded-3xl transition-all duration-500 hover:bg-[var(--text)]/[0.03] text-left ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}
                 style={{ transitionDelay: `${idx * 50}ms` }}
               >
