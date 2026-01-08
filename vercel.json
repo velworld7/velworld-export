@@ -1,16 +1,19 @@
 {
-    "rewrites": [
+    "routes": [
         {
-            "source": "/google6e32b65a98aa04d7.html",
-            "destination": "/google6e32b65a98aa04d7.html"
+            "src": "/sitemap.xml",
+            "headers": {
+                "Content-Type": "application/xml"
+            },
+            "dest": "/sitemap.xml"
         },
         {
-            "source": "/sitemap.xml",
-            "destination": "/sitemap.xml"
+            "src": "/robots.txt",
+            "dest": "/robots.txt"
         },
         {
-            "source": "/robots.txt",
-            "destination": "/robots.txt"
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
     ]
 }
