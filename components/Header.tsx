@@ -92,8 +92,8 @@ const Header: React.FC<HeaderProps> = ({ scrolled, darkMode, toggleDarkMode, onR
             className="relative h-12 md:h-16 lg:h-20 w-auto flex flex-col items-center justify-center cursor-pointer transition-all duration-700 hover:scale-105 active:scale-95 group"
           >
             <img
-              src="/image/logo_png.png"
-              alt="VEL WORLD"
+              src="/logo.png"
+              alt="VelWorld Logo"
               className="h-full w-auto object-contain drop-shadow-md transition-all duration-500"
             />
           </div>
