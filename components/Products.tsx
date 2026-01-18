@@ -474,12 +474,25 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
       setIsSubmitting(true);
 
       try {
+        // Map frontend state to backend requirements
+        const payload = {
+          name: formData.name,
+          phone: formData.phoneNumber,
+          company: formData.companyName,
+          website: formData.companyWebsite,
+          email: formData.email,
+          product: formData.productType,
+          quantity: formData.quantityPacking,
+          deliveryTime: formData.deliveryTime,
+          message: formData.message
+        };
+
         const response = await fetch('/api/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
 
         const data = await response.json();
@@ -488,7 +501,7 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
           alert('Enquiry sent successfully! Our team will contact you soon.');
           onClose();
         } else {
-          alert(`Failed to send enquiry: ${data.message || 'Unknown error'}`);
+          alert(`Failed to send enquiry: ${data.error || 'Unknown error'}`);
         }
       } catch (error) {
         console.error('Error submitting form:', error);

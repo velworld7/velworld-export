@@ -1,133 +1,68 @@
 
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
-  }
-
-  const {
-    name,
-    companyName,
-    companyWebsite,
-    email,
-    phoneNumber,
-    productType,
-    quantityPacking,
-    deliveryTime,
-    message
-  } = req.body;
-
-  // Basic Validation
-  if (!name || !email || !phoneNumber || !productType) {
-    console.error('Missing required fields:', { name, email, phoneNumber, productType });
-    return res.status(400).json({ message: 'Missing required fields' });
-  }
-
-  // Debug: Check Env Vars (Masked)
-  console.log('Checking Environment Variables:');
-  console.log('SMTP_HOST:', process.env.SMTP_HOST);
-  console.log('SMTP_PORT:', process.env.SMTP_PORT);
-  console.log('SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'Not Set');
-  console.log('SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'Not Set');
-
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('SMTP Credentials missing!');
-    return res.status(500).json({ message: 'Server configuration error: SMTP credentials missing.' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
+    const {
+      name,
+      phone,
+      company,
+      website,
+      email,
+      product,
+      quantity,
+      deliveryTime,
+      message,
+    } = req.body;
+
+    if (!name || !email || !phone) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // Should be smtp.titan.email
-      port: Number(process.env.SMTP_PORT), // Should be 465
-      secure: true, // REQUIRED for Titan Email on port 465
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true, // 🔴 REQUIRED for Titan (465)
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      debug: true, // show debug output
-      logger: true // log information in console
     });
 
-    // Verify connection configuration
-    await new Promise((resolve, reject) => {
-      transporter.verify(function (error, success) {
-        if (error) {
-          console.error('SMTP Connection Error:', error);
-          reject(error);
-        } else {
-          console.log("SMTP Server is ready to take our messages");
-          resolve(success);
-        }
-      });
-    });
+    // 🔍 Verify connection (CRITICAL)
+    await transporter.verify();
 
     const mailOptions = {
-      from: `"Vel World Enquiry" <${process.env.SMTP_USER}>`, // Sender address MUST match authenticated user
-      replyTo: email, // Set Reply-To as the customer’s email
-      to: 'team@velworld.net', // Receiver address
-      subject: 'New Global Enquiry – Vel World',
+      from: `"VEL WORLD Enquiry" <${process.env.SMTP_USER}>`,
+      to: process.env.SMTP_USER,
+      replyTo: email,
+      subject: "New Digital Enquiry – VelWorld",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #0066cc; padding: 20px; text-align: center; color: white;">
-            <h2 style="margin: 0; text-transform: uppercase; letter-spacing: 2px;">New Global Enquiry</h2>
-            <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.9;">Received from Vel World Website</p>
-          </div>
-          
-          <div style="padding: 30px; background-color: #f9f9f9;">
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; width: 40%; color: #555;">Full Name:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Company Name:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${companyName}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Email Address:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${email}</td>
-              </tr>
-               <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Phone / WhatsApp:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${phoneNumber}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Website:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${companyWebsite || 'N/A'}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Product Type:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333; font-weight: bold; color: #0066cc;">${productType}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Quantity & Packing:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${quantityPacking}</td>
-              </tr>
-               <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; font-weight: bold; color: #555;">Delivery Time:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; color: #333;">${deliveryTime}</td>
-              </tr>
-            </table>
-
-            <div style="margin-top: 20px; background-color: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
-              <h4 style="margin-top: 0; color: #0066cc;">Detailed Message:</h4>
-              <p style="white-space: pre-wrap; color: #333; line-height: 1.6;">${message || 'No additional details provided.'}</p>
-            </div>
-          </div>
-          
-          <div style="background-color: #eee; padding: 15px; text-align: center; font-size: 12px; color: #777;">
-            &copy; ${new Date().getFullYear()} Vel World. All rights reserved.
-          </div>
-        </div>
+        <h2>New Enquiry Received</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Company:</strong> ${company || "-"}</p>
+        <p><strong>Website:</strong> ${website || "-"}</p>
+        <p><strong>Product:</strong> ${product || "-"}</p>
+        <p><strong>Quantity:</strong> ${quantity || "-"}</p>
+        <p><strong>Delivery Time:</strong> ${deliveryTime || "-"}</p>
+        <p><strong>Message:</strong><br/>${message || "-"}</p>
       `,
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Email sent successfully!' });
 
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Email send error:', error);
-    res.status(500).json({ message: 'Failed to send email', error: error.message });
+    console.error("EMAIL ERROR:", error);
+    return res.status(500).json({
+      error: "Failed to send email",
+      details: error.message,
+    });
   }
 }
