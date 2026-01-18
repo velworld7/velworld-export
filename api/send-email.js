@@ -38,9 +38,9 @@ export default async function handler(req, res) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT, // e.g. 465 (secure) or 587
-      secure: process.env.SMTP_PORT == 465, // true for 465, false for other ports
+      host: process.env.SMTP_HOST, // Should be smtp.titan.email
+      port: Number(process.env.SMTP_PORT), // Should be 465
+      secure: true, // REQUIRED for Titan Email on port 465
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
