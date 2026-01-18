@@ -1,68 +1,32 @@
+import { Resend } from "resend";
 
-import nodemailer from "nodemailer";
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
-    const {
-      name,
-      phone,
-      company,
-      website,
-      email,
-      product,
-      quantity,
-      deliveryTime,
-      message,
-    } = req.body;
+    const data = req.body;
 
-    if (!name || !email || !phone) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: true, // 🔴 REQUIRED for Titan (465)
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    // 🔍 Verify connection (CRITICAL)
-    await transporter.verify();
-
-    const mailOptions = {
-      from: `"VEL WORLD Enquiry" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
-      replyTo: email,
-      subject: "New Digital Enquiry – VelWorld",
+    await resend.emails.send({
+      from: "VelWorld Enquiry <no-reply@velworld.net>",
+      to: ["team@velworld.net"],
+      reply_to: data.email,
+      subject: "New Website Enquiry",
       html: `
-        <h2>New Enquiry Received</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Company:</strong> ${company || "-"}</p>
-        <p><strong>Website:</strong> ${website || "-"}</p>
-        <p><strong>Product:</strong> ${product || "-"}</p>
-        <p><strong>Quantity:</strong> ${quantity || "-"}</p>
-        <p><strong>Delivery Time:</strong> ${deliveryTime || "-"}</p>
-        <p><strong>Message:</strong><br/>${message || "-"}</p>
+        <h3>New Enquiry</h3>
+        <p><b>Name:</b> ${data.name}</p>
+        <p><b>Email:</b> ${data.email}</p>
+        <p><b>Phone:</b> ${data.phone}</p>
+        <p><b>Message:</b> ${data.message}</p>
       `,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error("EMAIL ERROR:", error);
-    return res.status(500).json({
-      error: "Failed to send email",
-      details: error.message,
-    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Email failed" });
   }
 }
