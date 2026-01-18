@@ -2,44 +2,46 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method Not Allowed' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method Not Allowed' });
+  }
 
-    const {
-        name,
-        companyName,
-        companyWebsite,
-        email,
-        phoneNumber,
-        productType,
-        quantityPacking,
-        deliveryTime,
-        message
-    } = req.body;
+  const {
+    name,
+    companyName,
+    companyWebsite,
+    email,
+    phoneNumber,
+    productType,
+    quantityPacking,
+    deliveryTime,
+    message
+  } = req.body;
 
-    // Basic Validation
-    if (!name || !email || !phoneNumber || !productType) {
-        return res.status(400).json({ message: 'Missing required fields' });
-    }
+  // Basic Validation
+  if (!name || !email || !phoneNumber || !productType) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
 
-    try {
-        const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: process.env.SMTP_PORT,
-            secure: process.env.SMTP_PORT == 465, // true for 465, false for other ports
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
-            },
-        });
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.SMTP_PORT == 465, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      debug: true, // show debug output
+      logger: true // log information in console
+    });
 
-        const mailOptions = {
-            from: '"Vel World Enquiry" <noreply@velworld.net>', // Sender address
-            replyTo: email, // Set Reply-To as the customer’s email
-            to: 'team@velworld.net', // Receiver address
-            subject: 'New Global Enquiry – Vel World',
-            html: `
+    const mailOptions = {
+      from: `"Vel World Enquiry" <${process.env.SMTP_USER}>`, // Sender address MUST match authenticated user
+      replyTo: email, // Set Reply-To as the customer’s email
+      to: 'team@velworld.net', // Receiver address
+      subject: 'New Global Enquiry – Vel World',
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #0066cc; padding: 20px; text-align: center; color: white;">
             <h2 style="margin: 0; text-transform: uppercase; letter-spacing: 2px;">New Global Enquiry</h2>
@@ -93,13 +95,13 @@ export default async function handler(req, res) {
           </div>
         </div>
       `,
-        };
+    };
 
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: 'Email sent successfully!' });
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent successfully!' });
 
-    } catch (error) {
-        console.error('Email send error:', error);
-        res.status(500).json({ message: 'Failed to send email', error: error.message });
-    }
+  } catch (error) {
+    console.error('Email send error:', error);
+    res.status(500).json({ message: 'Failed to send email', error: error.message });
+  }
 }
