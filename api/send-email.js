@@ -20,13 +20,26 @@ export default async function handler(req, res) {
 
   // Basic Validation
   if (!name || !email || !phoneNumber || !productType) {
+    console.error('Missing required fields:', { name, email, phoneNumber, productType });
     return res.status(400).json({ message: 'Missing required fields' });
+  }
+
+  // Debug: Check Env Vars (Masked)
+  console.log('Checking Environment Variables:');
+  console.log('SMTP_HOST:', process.env.SMTP_HOST);
+  console.log('SMTP_PORT:', process.env.SMTP_PORT);
+  console.log('SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'Not Set');
+  console.log('SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'Not Set');
+
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.error('SMTP Credentials missing!');
+    return res.status(500).json({ message: 'Server configuration error: SMTP credentials missing.' });
   }
 
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      port: process.env.SMTP_PORT, // e.g. 465 (secure) or 587
       secure: process.env.SMTP_PORT == 465, // true for 465, false for other ports
       auth: {
         user: process.env.SMTP_USER,
@@ -34,6 +47,19 @@ export default async function handler(req, res) {
       },
       debug: true, // show debug output
       logger: true // log information in console
+    });
+
+    // Verify connection configuration
+    await new Promise((resolve, reject) => {
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.error('SMTP Connection Error:', error);
+          reject(error);
+        } else {
+          console.log("SMTP Server is ready to take our messages");
+          resolve(success);
+        }
+      });
     });
 
     const mailOptions = {
