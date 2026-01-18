@@ -467,11 +467,35 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
       message: ''
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      console.log('Enquiry Submitted:', formData);
-      alert('Enquiry sent successfully! Our team will contact you soon.');
-      onClose();
+      setIsSubmitting(true);
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert('Enquiry sent successfully! Our team will contact you soon.');
+          onClose();
+        } else {
+          alert(`Failed to send enquiry: ${data.message || 'Unknown error'}`);
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again later.');
+      } finally {
+        setIsSubmitting(false);
+      }
     };
 
     return (
@@ -564,8 +588,8 @@ const Products: React.FC<ProductsProps> = ({ activeCatId, onSelectCategory }) =>
               </div>
 
               <div className="col-span-1 md:col-span-2 mt-4">
-                <button type="submit" className="w-full py-6 bg-[#0066cc] text-white rounded-full font-black tracking-[0.5em] uppercase text-[11px] hover:bg-black transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98]">
-                  Submit Global Inquiry
+                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-[#0066cc] text-white rounded-full font-black tracking-[0.5em] uppercase text-[11px] hover:bg-black transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed">
+                  {isSubmitting ? 'Sending...' : 'Submit Global Inquiry'}
                 </button>
               </div>
             </form>
