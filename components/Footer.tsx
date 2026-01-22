@@ -132,12 +132,17 @@ const Footer: React.FC = () => {
                     </span>
                   </li>
                   <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
-                    <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
+                    <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0 h-fit">
                       <Phone size={20} className="text-[#0066cc]" />
                     </div>
-                    <a href="https://wa.me/918925144577" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text)] transition-colors">
-                      +91 89 251 44577
-                    </a>
+                    <div className="flex flex-col gap-2">
+                      <a href="https://wa.me/918925144577" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text)] transition-colors">
+                        +91 89 251 44577
+                      </a>
+                      <a href="https://wa.me/919597555560" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text)] transition-colors">
+                        +91 95 975 55560
+                      </a>
+                    </div>
                   </li>
                   <li className="flex gap-6 text-[var(--text-secondary)] text-sm font-medium">
                     <div className="p-3 bg-[var(--text)]/[0.03] rounded-xl shrink-0">
