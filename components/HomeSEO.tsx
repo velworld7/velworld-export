@@ -30,11 +30,7 @@ const HomeSEO: React.FC = () => {
                                 long-term partnerships that drive mutual growth and success in the global marketplace.
                             </p>
 
-                            <p>
-                                Experience the difference of working with a premier export house that values professionalism and customer satisfaction
-                                above all. Connect with VEL WORLD today to explore our extensive product portfolio and discover how we can
-                                elevate your business with the finest products from India.
-                            </p>
+
                         </div>
                     </div>
 
@@ -55,16 +51,16 @@ const HomeSEO: React.FC = () => {
                                         The Voice of Leadership
                                     </h3>
                                     <div className="text-sm font-medium text-[var(--text-secondary)] tracking-widest uppercase">
-                                        CEO, Vel World
+                                        FOUNDER, Vel World
                                     </div>
                                 </div>
                             </div>
 
                             <div className="prose prose-lg dark:prose-invert max-w-none text-[var(--text-secondary)] space-y-4 relative z-10">
-                                <p className="italic font-medium text-[var(--text)]">
+                                <p className="font-medium text-[var(--text)]">
                                     "VEL WORLD stands for Tenacious Trade—trade that endures, adapts and delivers no matter the market conditions. We built VEL WORLD to be tenacious in standards, disciplined in processes, and uncompromising in delivery. We do not measure success by volume alone, but by long-term partnerships, repeat clients, and reputations earned shipment by shipment.
                                 </p>
-                                <p className="italic font-medium text-[var(--text)]">
+                                <p className="font-medium text-[var(--text)]">
                                     Connecting India’s rich resources to the global demand requires more than just logistics, it requires a commitment to integrity. We have very clear principle to enrich the Indian economy by uplifting the manufacturing sector."
                                 </p>
                                 <div className="mt-6 pt-6 border-t border-[var(--border)]">
